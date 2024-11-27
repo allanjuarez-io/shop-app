@@ -1,4 +1,4 @@
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const CLIENT_BASE_URL = import.meta.env.VITE_CLIENT_BASE_URL;
 
-export { SERVER_URL, FRONTEND_URL };
+export { API_BASE_URL, CLIENT_BASE_URL };

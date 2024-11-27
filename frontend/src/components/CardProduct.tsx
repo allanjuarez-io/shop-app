@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import CardBadge from './CardBadge';
-import { FRONTEND_URL } from '../constants';
-import type { ProductDB } from '../interfaces';
+import { CLIENT_BASE_URL } from '@const/index';
+import type { ProductDB } from '@interfaces/index';
 
 export default function CardProduct({
   imageUrl,
@@ -13,7 +13,7 @@ export default function CardProduct({
 }: Omit<ProductDB, 'createAt' | 'updatedAt'>) {
   return (
     <Link
-      to={`${FRONTEND_URL}/product-details/${productSlug}?querySearch=${_id}`}
+      to={`${CLIENT_BASE_URL}/product-details/${productSlug}?querySearch=${_id}`}
       className='min-h-full'
     >
       {/* hover:outline hover:outline-[1px] hover:outline-[--text-color] hover:rounded-[0.5rem] */}

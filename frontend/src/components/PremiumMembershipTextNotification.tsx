@@ -1,4 +1,4 @@
-import { PremiumBadge } from '../components';
+import { PremiumBadge } from '@components/index';
 
 export default function PremiumMembershipTextNotification({ size = '1' }) {
   return (

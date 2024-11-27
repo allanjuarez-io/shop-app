@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Product, ToolBar } from '../components';
-import { SERVER_URL } from '../constants';
-import type { ProductDB } from '../interfaces';
+import { Product, ToolBar } from '@components/index';
+import { API_BASE_URL } from '@const/index';
+import type { ProductDB } from '@interfaces/index';
 
 export default function ProductDetails() {
   const [product, setProduct] = useState<
@@ -23,7 +23,7 @@ export default function ProductDetails() {
   useEffect(() => {
     async function getProductById() {
       try {
-        const request = await fetch(`${SERVER_URL}/get/${querySearch}`);
+        const request = await fetch(`${API_BASE_URL}/get/${querySearch}`);
         const responseData = await request.json();
         console.log(responseData);
         setProduct(responseData.data);

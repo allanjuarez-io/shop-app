@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PremiumMembershipTextNotification from './PremiumMembershipTextNotification';
-import { ProductDB } from '../interfaces';
+import type { ProductDB } from '@interfaces/index';
 
 export default function Product({
   name,

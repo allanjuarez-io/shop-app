@@ -1,4 +1,4 @@
-import Premium from '../assets/images/Star.svg';
+import Premium from '@assets/images/Star.svg';
 
 export default function CardBadge() {
   return (

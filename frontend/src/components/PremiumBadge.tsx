@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Premium from '../assets/images/Star.svg';
+import Premium from '@assets/images/Star.svg';
 
 export default function PremiumBadge({ size = '1' }) {
   return (
