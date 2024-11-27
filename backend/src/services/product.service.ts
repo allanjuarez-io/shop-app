@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../config';
+import { FAKESTOREAPI_BASE_URL } from '../constants';
 import { ProductModel } from '../models';
 import { createNewSlug } from './url.service';
 import { ProductAdapter } from '../util';
@@ -6,7 +6,7 @@ import type { ProductAPI, ProductRaw } from '../interfaces';
 
 async function fillDataBase(): Promise<void> {
   try {
-    const request = await fetch(`${API_BASE_URL}?limit=25`);
+    const request = await fetch(`${FAKESTOREAPI_BASE_URL}?limit=10`);
     const responseData: ProductAPI[] = await request.json();
 
     const preData = responseData.map((product) => {
@@ -20,7 +20,7 @@ async function fillDataBase(): Promise<void> {
     const adaptedData = preData.map((product) => ProductAdapter(product));
 
     await ProductModel.insertMany(adaptedData);
-    console.log('Se insertaron los documentos en la base de datos con exito.');
+    console.log('Se insertaron los elementos en la base de datos con exito.');
   } catch (error) {
     console.error(error);
   }
@@ -44,9 +44,14 @@ async function getProductDBById(productId: string) {
   }
 }
 
-async function createProductDB(product: ProductRaw) {
+async function createProductDB(product: Omit<ProductRaw, 'productSlug'>) {
   try {
-    const newProduct = await ProductModel.create(product);
+    const newSlug = createNewSlug(product.name);
+    const data = {
+      ...product,
+      productSlug: newSlug,
+    };
+    const newProduct = await ProductModel.create(data);
     return newProduct;
   } catch (error) {
     console.error(error);

@@ -6,26 +6,25 @@ export async function updateProductById(req: Request, res: Response) {
     if (!req.body) {
       throw new Error('NO_BODY_CONTENT');
     }
-    // console.log(req.body);
-    console.log('Funcionas?');
 
-    const { productId } = req.params;
-    console.log('Params', productId);
+    if (!req.params.productId) {
+      throw new Error('NO_PRODUCT_ID');
+    }
 
     const newData = {
-      name: req.body.name ?? '',
-      description: req.body.description ?? '',
-      price: req.body.price ?? 0.0,
-      category: req.body.category ?? '',
-      imageUrl: req.body.imageUrl ?? '',
-      productSlug: req.body.productSlug ?? '',
+      name: req.body.name || '',
+      description: req.body.description || '',
+      price: req.body.price || 0.0,
+      category: req.body.category || '',
+      imageUrl: req.body.imageUrl || '',
+      productSlug: req.body.productSlug || '',
     };
 
-    const product = await updateProductDB(productId, newData);
+    const product = await updateProductDB(req.params.productId, newData);
 
     console.log(product);
 
-    res.status(200).send({ data: 'Update' });
+    res.status(200).send('Update');
   } catch (error) {
     console.error(error);
   }

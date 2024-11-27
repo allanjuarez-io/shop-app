@@ -7,6 +7,6 @@ export function ProductAdapter(product: any): ProductRaw {
     price: product.price,
     category: product.category,
     imageUrl: product.image,
-    productSlug: product.productSlug,
+    productSlug: product.productSlug || '',
   };
 }

@@ -19,7 +19,6 @@ function getRoutes() {
     const fileName = withoutExtension(file, deleteFileExtension);
 
     if (fileName !== 'index') {
-      console.log(fileName);
       import(`./${fileName}`).then((module) => {
         router.use(`/${fileName}`, module.router);
       });
