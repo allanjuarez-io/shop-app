@@ -1,27 +1,15 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Header, Main, Footer } from './components';
+import './styles/globals.css';
 
 function Layout() {
   return (
     <>
-      <header>
-        <Link to={'/'}>
-          <span>Shop</span>
-        </Link>
-      </header>
-      <main>
+      <Header />
+      <Main>
         <Outlet />
-      </main>
-      <footer>
-        <small>
-          <span translate='no'>Shop</span>
-          <p>
-            Construido por
-            <Link to='#' target='_blank'>
-              @allanjuarez-io
-            </Link>
-          </p>
-        </small>
-      </footer>
+      </Main>
+      <Footer />
     </>
   );
 }

@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Poppins Shop';
+  src: local('Poppins'), url('../assets/fonts/Poppins-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Shop';
+  src: local('Poppins'), url('../assets/fonts/Poppins-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Shop';
+  src: local('Poppins'), url('../assets/fonts/Poppins-SemiBold.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Shop';
+  src: local('Poppins'), url('../assets/fonts/Poppins-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Shop';
+  src: local('Poppins'), url('../assets/fonts/Poppins-ExtraBold.ttf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+:root {
+  --seasalt: #f8f9fa;
+  --night: #121417;
+  --sapphire: #1f55c1;
+  --slategray: #6c757d;
+  --bg-primary-color: var(--seasalt);
+  --text-color: var(--night);
+  --text-reverse-color: var(--seasalt);
+  --text-secondary-color: var(--slategray);
+  --premium-color: var(--sapphire);
+  --surface-blur: rgb(108, 117, 125);
+}
+
+html {
+  font-family: Poppins Shop;
+  background-color: var(--bg-primary-color);
+  color: var(--night);
+}

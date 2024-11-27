@@ -2,7 +2,12 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './Layout.tsx';
 import Error from './Error.tsx';
-import { Home, ProductDetails, ProductEditor } from './routes';
+import {
+  Home,
+  PremiumMembership,
+  ProductDetails,
+  ProductEditor,
+} from './routes';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: 'product-editor/:productId',
         element: <ProductEditor />,
+      },
+      {
+        path: 'premium-membership',
+        element: <PremiumMembership />,
       },
     ],
   },
