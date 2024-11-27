@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { SERVER_URL } from '../constants';
-import type { ProductDB } from '../interfaces';
+import { API_BASE_URL } from '@const/index';
+import type { ProductDB } from '@interfaces/index';
 
 const initState: Omit<ProductDB, 'createAt' | 'updatedAt'> = {
   _id: '',
@@ -21,7 +21,7 @@ export default function ProductEditor() {
   useEffect(() => {
     async function getProductById() {
       try {
-        const request = await fetch(`${SERVER_URL}/get/${productId}`);
+        const request = await fetch(`${API_BASE_URL}/get/${productId}`);
         const responseData = await request.json();
         console.log(responseData);
         setFormData(responseData.data);
@@ -52,7 +52,7 @@ export default function ProductEditor() {
         headers: new Headers({ 'content-type': 'application/json' }),
         body: JSON.stringify(formData),
       };
-      await fetch(`${SERVER_URL}/update/${formData._id}`, requestOptions);
+      await fetch(`${API_BASE_URL}/update/${formData._id}`, requestOptions);
       console.log('El produto de actualizo con exito.');
       navigate(`/`, { replace: true });
     } catch (error) {

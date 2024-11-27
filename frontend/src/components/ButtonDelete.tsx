@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { SERVER_URL } from '../constants';
+import { API_BASE_URL } from '../constants';
 
 export default function ButtonDelete({
   text = '',
@@ -16,7 +16,7 @@ export default function ButtonDelete({
         method: 'DELETE',
       };
 
-      await fetch(`${SERVER_URL}/delete/${productId}`, requestOptions);
+      await fetch(`${API_BASE_URL}/delete/${productId}`, requestOptions);
       console.log('Se elimino el producto con exito.');
       navigate('/', { replace: true });
     } catch (error) {
