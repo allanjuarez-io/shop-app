@@ -5,7 +5,6 @@ export interface ProductAPI {
   description: string;
   category: string;
   image: string;
-  // nameUrl?: string;
 }
 
 export interface ProductRaw {
@@ -14,7 +13,7 @@ export interface ProductRaw {
   price: number;
   category: string;
   imageUrl: string;
-  productSlug: string;
+  productSlug?: string;
 }
 
 export interface ProductDB extends ProductRaw {

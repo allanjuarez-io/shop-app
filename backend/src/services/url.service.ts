@@ -1,4 +1,4 @@
-function createNewSlug(productName: string) {
+export function createNewSlug(productName: string) {
   const regexRule1 = /[^a-zA-Z0-9 ]/g;
   const regexRule2 = /\s+/g;
 
@@ -8,5 +8,3 @@ function createNewSlug(productName: string) {
     .replace(regexRule2, '-')
     .toLowerCase();
 }
-
-export { createNewSlug };

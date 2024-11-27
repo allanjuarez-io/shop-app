@@ -4,6 +4,6 @@ import { getAllProducts, getProductById } from '../controllers';
 const router = Router();
 
 router.get('/', getAllProducts);
-router.get('/:id', getProductById);
+router.get('/:productId', getProductById);
 
 export { router };

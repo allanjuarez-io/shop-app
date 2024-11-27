@@ -4,10 +4,12 @@ import type { Request, Response } from 'express';
 export async function deleteProductById(req: Request, res: Response) {
   try {
     if (!req.params.productId) {
-      throw new Error('NO_ID');
+      throw new Error('NO_PRODUCT_ID');
     }
 
     await deleteProductDB(req.params.productId);
-    res.send({ data: 'Delete' });
-  } catch (error) {}
+    res.status(200).send('Delete');
+  } catch (error) {
+    console.error(error);
+  }
 }
