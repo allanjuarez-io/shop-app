@@ -29,11 +29,11 @@ Para comenzar lo primero que se debe hacer es instalar las dependencia del proye
 Dentro de la carpeta **backend** se debe crear un archivo **.env** de donde se obtendran las variables de entorno necesarias. Una vez creado el archivo se debe incluir las siguientes variables:
 
 ```
-PORT = your_port
+SERVER_PORT = your_port
 URI = your_uri
 ```
 
-> Puedes agregar el valor para la variable de entorno **PORT** por el que mejor se ajuste a tus necesidades. Recomiendo utilizar el puerto 4000 para el servidor (si es que no loo estan utilizando).
+> Puedes agregar un valor nuevo para la variable de entorno **PORT** por el que mejor se ajuste a tus necesidades; sin embargo, es muy importante que sepas que si realizas un cambio en valor del puerto de la carpeta **backend** tendras que cambiar el valor de la variable de entorno **VITE_API_BASE_URL** de la carpeta **frontend** por el nuevo puerto.
 
 > La variable de entorno **URI** dependera de cada usuario; para obtener una deberas registrarte en la pagina de oficial de [mongodb](https://www.mongodb.com/).
 
