@@ -20,8 +20,8 @@ export async function createProduct(req: Request, res: Response) {
 
     const requestOptions = {
       method: 'POST',
-      body: JSON.stringify(preData),
       headers: new Headers({ 'content-type': 'application/json' }),
+      body: JSON.stringify(preData),
     };
 
     const request = await fetch(API_BASE_URL, requestOptions);
