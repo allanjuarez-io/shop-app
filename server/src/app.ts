@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import { rateLimit } from 'express-rate-limit';
 import { router } from './routes';
 import { dbConnect } from './config';
 import { ProductModel } from './models';
@@ -10,7 +11,12 @@ const PORT: string | number = process.env.SERVER_PORT || 4001;
 
 const application = express();
 
-const whitelist: string[] = ['http://localhost:3000'];
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 40,
+});
+
+const whitelist: string[] = ['shop-app.onrender.com', 'http://localhost:3000'];
 
 const corsConfig: cors.CorsOptions = {
   origin: (origin, cb) => {
@@ -20,8 +26,10 @@ const corsConfig: cors.CorsOptions = {
       cb(new Error('Not allowed by CORS'));
     }
   },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
+application.use(limiter);
 application.use(cors(corsConfig));
 application.use(express.json());
 application.use('/api', router);
