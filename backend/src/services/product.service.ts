@@ -6,7 +6,7 @@ import type { ProductAPI, ProductRaw } from '../interfaces';
 
 async function fillDataBase(): Promise<void> {
   try {
-    const request = await fetch(`${API_BASE_URL}?limit=8`);
+    const request = await fetch(`${API_BASE_URL}?limit=25`);
     const responseData: ProductAPI[] = await request.json();
 
     const preData = responseData.map((product) => {
@@ -20,9 +20,7 @@ async function fillDataBase(): Promise<void> {
     const adaptedData = preData.map((product) => ProductAdapter(product));
 
     await ProductModel.insertMany(adaptedData);
-    console.log(
-      'Se insertaron los documentos en base de datos de manera correcta.'
-    );
+    console.log('Se insertaron los documentos en la base de datos con exito.');
   } catch (error) {
     console.error(error);
   }
@@ -86,6 +84,8 @@ async function updateProductDB(
 
 async function deleteProductDB(productId: string) {
   try {
+    await ProductModel.deleteOne({ _id: productId });
+    console.log('Se elimino el producto con exito');
   } catch (error) {
     console.error(error);
   }

@@ -3,6 +3,6 @@ import { deleteProductById } from '../controllers';
 
 const router = Router();
 
-router.delete('/:id', deleteProductById);
+router.delete('/:productId', deleteProductById);
 
 export { router };
