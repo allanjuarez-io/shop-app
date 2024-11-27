@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { FRONTEND_URL, SERVER_URL } from '../constants';
+import { useSearchParams } from 'react-router-dom';
+import { Product, ToolBar } from '../components';
+import { SERVER_URL } from '../constants';
+import type { ProductDB } from '../interfaces';
 
 export default function ProductDetails() {
-  useEffect(() => {}, []);
-  const [product, setProduct] = useState({
+  const [product, setProduct] = useState<
+    Omit<ProductDB, 'createAt' | 'updatedAt'>
+  >({
     _id: '',
     name: '',
     description: '',
@@ -15,12 +18,12 @@ export default function ProductDetails() {
   });
 
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('querySearch');
+  const querySearch = searchParams.get('querySearch');
 
   useEffect(() => {
     async function getProductById() {
       try {
-        const request = await fetch(`${SERVER_URL}/get/${query}`);
+        const request = await fetch(`${SERVER_URL}/get/${querySearch}`);
         const responseData = await request.json();
         console.log(responseData);
         setProduct(responseData.data);
@@ -29,38 +32,12 @@ export default function ProductDetails() {
       }
     }
     getProductById();
-  }, [query]);
+  }, [querySearch]);
 
-  console.log('State', product);
   return (
-    <article>
-      <div>
-        <Link to={`${FRONTEND_URL}/product-editor/${product._id}`}>
-          Editar producto
-        </Link>
-      </div>
-      {/* Image */}
-      <div>
-        <img src={product.imageUrl} alt={product.name} />
-      </div>
-      {/* Product Description */}
-      <div>
-        <Link to={'#'}>{product.category}</Link>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
-      </div>
-      <div>
-        <p>{product.description}</p>
-        <span>
-          Si tienes la membresia premium tu envio es totalmente gratis a
-          ciualquier parte del mundo*
-        </span>
-      </div>
-      {/* Shop Buttons */}
-      <div>
-        <button onClick={() => alert('Funcionas?')}>Agregar al carrito</button>
-        <button onClick={() => alert('Funcionas?')}>Comprar ahora</button>
-      </div>
-    </article>
+    <section>
+      <Product {...product} />
+      <ToolBar productId={product._id} />
+    </section>
   );
 }

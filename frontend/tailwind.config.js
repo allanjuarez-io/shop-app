@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{html,js,jsx,tsx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        fill: 'repeat(auto-fill, minmax(256px, 384px))',
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
