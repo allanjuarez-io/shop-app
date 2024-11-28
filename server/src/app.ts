@@ -35,8 +35,6 @@ const corsConfig: cors.CorsOptions = {
 
 application.use(limiter);
 application.use(cors(corsConfig));
-// Archivos estaticos del cliente
-app.use(express.static(path.join(__dirname, '../client/dist')));
 application.use(express.json());
 application.use('/api', router);
 
