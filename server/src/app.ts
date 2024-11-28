@@ -16,7 +16,10 @@ const limiter = rateLimit({
   limit: 40,
 });
 
-const whitelist: string[] = ['shop-app.onrender.com', 'http://localhost:3000'];
+const whitelist: string[] = [
+  'https://shop-app-0eux.onrender.com',
+  'http://localhost:3000',
+];
 
 const corsConfig: cors.CorsOptions = {
   origin: (origin, cb) => {
