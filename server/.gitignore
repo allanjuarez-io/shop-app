@@ -1,7 +1,9 @@
-# Modulos
+# Modules
 node_modules
 
-# Variables de entorno
+# Environments
 .env
+.env.production
 
+# Build
 dist
