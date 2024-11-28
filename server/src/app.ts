@@ -18,6 +18,7 @@ const limiter = rateLimit({
 
 const whitelist: string[] = [
   'https://shop-app-0eux.onrender.com',
+  'https://shop-app-client-by56.onrender.com',
   'http://localhost:3000',
 ];
 
