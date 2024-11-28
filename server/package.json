@@ -1,15 +1,14 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
+  "name": "server",
   "private": true,
+  "author": "allanjuarez-io",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon ./src/app.ts",
+    "dev": "cross-env NODE_ENV=development nodemon src/app.ts",
     "build": "tsc",
-    "start": "cross-env NODE_ENV=production node ./dist/app.js"
+    "start": "cross-env NODE_ENV=production node dist/app.js"
   },
   "keywords": [],
-  "author": "allan juarez",
-  "description": "",
   "dependencies": {
     "cors": "2.8.5",
     "cross-env": "7.0.3",
